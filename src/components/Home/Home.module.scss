@@ -1,0 +1,41 @@
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    hr {
+      width: 90%;
+      margin: 10px auto;
+    }
+
+    button,
+    input {
+      width: 100%;
+      margin: 5px 0;
+    }
+
+    input {
+      text-align: center;
+      font-size: 1.4rem;
+      padding: 5px 0;
+    }
+
+    .createRoomBtn {
+      background-color: var(--jungle-green);
+    }
+  }
+}
