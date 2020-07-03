@@ -1,21 +1,36 @@
-import styles from "./Home.module.scss";
-import { useRouter } from "next/router";
 import { useState, FormEvent, KeyboardEvent } from "react";
+import { useRouter } from "next/router";
+import { createRoomAPI, checkRoomAPI } from "api";
+import styles from "./Home.module.scss";
 
 const Home = () => {
   const [room, setRoom] = useState("");
   const router = useRouter();
 
-  const onChange = ({ currentTarget }: FormEvent<HTMLInputElement>): void => {
+  const onChange = ({ currentTarget }: FormEvent<HTMLInputElement>) => {
     setRoom(currentTarget.value.toUpperCase());
   };
 
-  const joinRoom = () => {
-    room.length === 5 && router.push(`/${room}`);
+  const joinRoom = async () => {
+    try {
+      if (room.length === 5) {
+        await checkRoomAPI(room);
+        router.push(`/${room}`);
+      }
+    } catch (error) {
+      // Room not found
+    }
   };
 
   const onEnter = ({ key }: KeyboardEvent<HTMLInputElement>) => {
     key === "Enter" && joinRoom();
+  };
+
+  const createRoom = async () => {
+    try {
+      const { code } = await createRoomAPI();
+      router.push(`/${code}`);
+    } catch (error) {}
   };
 
   return (
@@ -32,7 +47,9 @@ const Home = () => {
         />
         <button onClick={joinRoom}>Join Room</button>
         <hr />
-        <button className={styles.createRoomBtn}>Create Room</button>
+        <button onClick={createRoom} className={styles.createRoomBtn}>
+          Create Room
+        </button>
       </div>
     </section>
   );

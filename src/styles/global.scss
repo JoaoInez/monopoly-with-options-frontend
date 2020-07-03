@@ -5,6 +5,7 @@
 html {
   font-family: "MuseoModerno", cursive;
   box-sizing: border-box;
+  font-size: 18px;
 }
 *,
 *:before,
@@ -35,6 +36,7 @@ button,
 input {
   font-family: inherit;
   font-size: 1rem;
+  padding: 5px;
 }
 button {
   cursor: pointer;
