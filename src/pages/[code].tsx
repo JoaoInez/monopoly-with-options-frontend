@@ -1,6 +1,6 @@
 import Room from "components/Room";
 import { NextPage } from "next";
-import { Cookies } from "types/cookies";
+import { Cookies } from "types";
 
 const RoomPage: NextPage<Cookies> = ({ cookies }) => <Room cookies={cookies} />;
 

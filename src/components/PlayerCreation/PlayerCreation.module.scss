@@ -1,16 +1,62 @@
 .container {
-  background-color: white;
-  color: black;
-  box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 2px, rgba(0, 0, 0, 0.05) 0px 7px 5px,
-    rgba(0, 0, 0, 0.06) 0px 13px 10px, rgba(0, 0, 0, 0.07) 0px 22px 18px,
-    rgba(0, 0, 0, 0.09) 0px 42px 33px, rgba(0, 0, 0, 0.12) 0px 100px 80px;
-  padding: 20px;
-  border-radius: 4px;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  input {
-    background-color: var(--gallery);
-    margin-bottom: 10px;
+  .card {
+    background-color: white;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 2px, rgba(0, 0, 0, 0.05) 0px 7px 5px,
+      rgba(0, 0, 0, 0.06) 0px 13px 10px, rgba(0, 0, 0, 0.07) 0px 22px 18px,
+      rgba(0, 0, 0, 0.09) 0px 42px 33px, rgba(0, 0, 0, 0.12) 0px 100px 80px;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .playerIcon {
+      width: 120px;
+      height: 120px;
+      background-color: var(--ebony-clay);
+      // background-color: var(--gallery);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      position: relative;
+
+      & > svg {
+        transform: scale(4);
+        color: var(--white);
+        // color: var(--jungle-green);
+      }
+
+      button {
+        position: absolute;
+        right: -8px;
+        bottom: -8px;
+        width: 45px;
+        height: 45px;
+        background-color: var(--gallery);
+        color: var(--black);
+        border-radius: 50%;
+        border: 5px solid var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    input {
+      background-color: var(--gallery);
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+    }
   }
 }
