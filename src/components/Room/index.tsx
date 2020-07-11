@@ -7,7 +7,6 @@ import GameView from "components/GameView";
 import PlayerCreation from "components/PlayerCreation";
 import getCookies from "utils/getCookies";
 import { Cookies, Player, Icon } from "types";
-// import styles from "./Room.module.scss";
 
 type Session = {
   code?: string | string[];
@@ -42,9 +41,9 @@ const Room = ({ cookies }: Cookies) => {
 
   useEffect(() => {
     if (socket && session?.playerId) {
+      // Maybe this needs to change
       if (!socket.connected) {
         socket.connect();
-        socket.emit("join-room", session);
         setLoading(false);
       }
       socket.on("game", (player: Player, otherPlayers: any) => {
@@ -62,6 +61,10 @@ const Room = ({ cookies }: Cookies) => {
         setOtherPlayers((otherPlayers) =>
           otherPlayers.filter(({ id }) => id !== playerId)
         );
+      });
+      // TODO: Test later on actual phones
+      socket.on("connect", () => {
+        socket.emit("join-room", session);
       });
     }
   }, [socket, session]);

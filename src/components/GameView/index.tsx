@@ -15,6 +15,19 @@ const GameView = ({
 
   return (
     <section className={styles.container}>
+      <div className={styles.playersGrid}>
+        {otherPlayers.map(({ id, icon, name }) => (
+          <div key={id}>
+            <PlayerIcon icon={icon} />
+            <small>
+              {name
+                .split(" ")
+                .map(([firstLetter]) => `${firstLetter}.`)
+                .join("")}
+            </small>
+          </div>
+        ))}
+      </div>
       <div className={styles.card}>
         <p className={styles.logo}>MWO</p>
         <div className={styles.moneyWrapper}>
@@ -35,9 +48,6 @@ const GameView = ({
           <BsArrowLeftRight />
         </button>
       </div>
-      {otherPlayers.map(({ id, name }: any) => (
-        <p key={id}>{name}</p>
-      ))}
     </section>
   );
 };
